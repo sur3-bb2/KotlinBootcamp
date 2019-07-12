@@ -1,5 +1,7 @@
 package sequences
 
+import kotlin.properties.Delegates
+
 /**
  * The first important thing to know is that all intermediate operations (the functions that return a new sequence)
  * are not executed until a terminal operation has been called. Sequences are evaluated lazily to avoid examining
@@ -242,3 +244,5 @@ fun productsSortAndProcessingSequence(): Double {
             .map { it.price }
             .average()
 }
+
+private var item: List<String> by Delegates.observable(initialValue = listOf(), onChange = { property, oldValue, newValue -> {} })
